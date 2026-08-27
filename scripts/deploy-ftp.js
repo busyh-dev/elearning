@@ -23,8 +23,15 @@ function prompt(question) {
 
 async function deploy() {
     let host = process.env.FTP_HOST || "ftp.corsi.aletheiasrl.it";
-    let user = process.env.FTP_USER || "3489814@aruba.it";
-    let password = process.env.FTP_PASSWORD || "H8qpgtv9";
+    let user = process.env.FTP_USER;
+    let password = process.env.FTP_PASSWORD;
+
+    if (!user) {
+        user = await prompt("Inserisci Nome Utente FTP Aruba: ");
+    }
+    if (!password) {
+        password = await prompt("Inserisci Password FTP Aruba: ");
+    }
 
     const client = new ftp.Client(30000);
     client.ftp.verbose = false;

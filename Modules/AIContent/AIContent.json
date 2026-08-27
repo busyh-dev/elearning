@@ -1,0 +1,21 @@
+{
+    "AIContent": {
+        "item_id": "45195785",
+        "migration": [
+            "2023_03_28_132127_AddPermissionsToRolePermissionsTable.php",
+            "2023_03_28_133214_create_ai_templates_table.php",
+            "2023_03_28_150736_create_ai_template_contents_table.php",
+            "2023_03_30_091948_create_ai_generated_contents_table.php",
+            "2023_04_03_114539_AddDefaultSetting.php"
+        ],
+        "versions": [
+            "2.2.0"
+        ],
+        "url": [
+            "https://www.aorasoft.com/"
+        ],
+        "notes": [
+            "This AIContent Module For Infix Lms."
+        ]
+    }
+}

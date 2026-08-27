@@ -1,0 +1,13 @@
+{
+    "name": "SCORM",
+    "alias": "scorm",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\SCORM\\Providers\\SCORMServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

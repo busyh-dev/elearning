@@ -1,0 +1,60 @@
+
+#generated_content {
+    border: 1px solid var(--backend-border-color);
+    background: #fefeff;
+    font-size: 14px;
+    color: #415094;
+    padding-left: 20px;
+    /* height: 46px; */
+    border-radius: 30px;
+    width: 100%;
+    padding-right: 15px;
+}
+
+.ai_float_button {
+    padding: 10px 50px 15px 50px !important;
+    top: 230px !important;
+}
+
+.primary_input_label .primary-btn {
+    padding: 0 8px;
+    border-radius: 4px !important;
+    text-transform: capitalize !important;
+    font-size: 10px;
+    line-height: 16px;
+}
+
+.rev-primary-btn {
+    font-size: 12px;
+    display: inline-block;
+    color: #fff;
+    background: var(--button-background);
+    letter-spacing: 1px;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    line-height: 40px;
+    padding: 0 10px;
+    outline: none !important;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+    transition: all .4s ease 0s;
+    box-shadow: var(--shadow);
+}
+
+.rev-primary-btn i {
+    margin-right: 5px;
+}
+
+.rev-primary-btn:hover {
+    color: #415094;
+    background: var(--button-hover);
+}
+
+.extraBtn i {
+    margin-right: 0;
+}

@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "deploy": "node scripts/deploy-ftp.js",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -12,6 +13,7 @@
     "devDependencies": {
         "@vue/cli-plugin-babel": "^5.0.4",
         "axios": "^0.19",
+        "basic-ftp": "^6.2.0",
         "bootstrap": "^5.3.3",
         "cross-env": "^7.0",
         "jquery": "^3.2",

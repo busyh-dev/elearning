@@ -50,7 +50,11 @@ async function deploy() {
         console.log("📂 Caricamento dei file aggiornati su corsi.aletheiasrl.it...\n");
 
         const initialDir = await client.pwd();
-        console.log(`📍 Cartella remota iniziale: ${initialDir}\n`);
+        console.log(`📍 Cartella remota iniziale: ${initialDir}`);
+
+        const rootList = await client.list();
+        console.log("📂 Cartelle trovate sul server:", rootList.map(i => i.name).join(", ") || "(vuota)");
+        console.log("");
 
         async function cdOrCreateRelative(dirPath) {
             const parts = dirPath.split("/").filter(p => p.length > 0 && p !== ".");
@@ -77,7 +81,7 @@ async function deploy() {
                     await cdOrCreateRelative(remoteDir);
                 }
                 const fileName = path.basename(normalizedRelPath);
-                await client.uploadFile(localPath, fileName);
+                await client.uploadFrom(localPath, fileName);
                 console.log(`✓ Caricato con successo: ${relPath}`);
             } else {
                 console.warn(`⚠️ File non trovato in locale: ${relPath}`);

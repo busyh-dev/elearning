@@ -50,7 +50,7 @@
                                         <!-- svg -->
                                     </span>
                                 </div>
-                                <input type="email" value="{{old('email')}}"
+                                <input type="email" value="{{old('email')}}" autocomplete="off"
                                        class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
                                        placeholder="{{__('common.Enter Email')}}" name="email" aria-label="Username"
                                        aria-describedby="basic-addon3">
@@ -185,7 +185,7 @@
                                     </svg>
                                 </span>
                             </div>
-                            <input type="text" id="reset_identity_input" class="form-control" placeholder="Nome utente o Email">
+                            <input type="text" id="reset_identity_input" class="form-control" placeholder="Nome utente o Email" autocomplete="off">
                         </div>
                         <button type="button" id="btn_verify_identity" class="theme_btn text-center w-100 mt-2">
                             Verifica Account
@@ -206,7 +206,7 @@
                                     </svg>
                                 </span>
                             </div>
-                            <input type="password" id="reset_new_password" class="form-control" placeholder="Nuova Password (min. 8 caratteri)">
+                            <input type="password" id="reset_new_password" class="form-control" placeholder="Nuova Password (min. 8 caratteri)" autocomplete="new-password">
                         </div>
                         <div class="input-group custom_group_field mb-3">
                             <div class="input-group-prepend">
@@ -216,7 +216,7 @@
                                     </svg>
                                 </span>
                             </div>
-                            <input type="password" id="reset_confirm_password" class="form-control" placeholder="Conferma Nuova Password">
+                            <input type="password" id="reset_confirm_password" class="form-control" placeholder="Conferma Nuova Password" autocomplete="new-password">
                         </div>
                         <button type="button" id="btn_save_new_password" class="theme_btn text-center w-100 mt-2">
                             Reimposta Password

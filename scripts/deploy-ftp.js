@@ -49,12 +49,15 @@ async function deploy() {
         console.log("✅ Connessione FTP stabilita con successo!");
         console.log("📂 Caricamento dei file aggiornati su corsi.aletheiasrl.it...\n");
 
-        const initialDir = await client.pwd();
-        console.log(`📍 Cartella remota iniziale: ${initialDir}`);
-
         const rootList = await client.list();
         console.log("📂 Cartelle trovate sul server:", rootList.map(i => i.name).join(", ") || "(vuota)");
-        console.log("");
+
+        const baseFolder = "corsi.aletheiasrl.it";
+        console.log(`📁 Navigazione nella cartella del sito: /${baseFolder}`);
+        await client.cd("/" + baseFolder);
+
+        const initialDir = await client.pwd();
+        console.log(`📍 Cartella remota di destinazione: ${initialDir}\n`);
 
         async function cdOrCreateRelative(dirPath) {
             const parts = dirPath.split("/").filter(p => p.length > 0 && p !== ".");

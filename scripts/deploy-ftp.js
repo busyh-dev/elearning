@@ -50,6 +50,21 @@ async function deploy() {
         console.log("📂 Caricamento dei file aggiornati su corsi.aletheiasrl.it...\n");
 
         const initialDir = await client.pwd();
+        console.log(`📍 Cartella remota iniziale: ${initialDir}\n`);
+
+        async function cdOrCreateRelative(dirPath) {
+            const parts = dirPath.split("/").filter(p => p.length > 0 && p !== ".");
+            for (const part of parts) {
+                try {
+                    await client.cd(part);
+                } catch (e) {
+                    try {
+                        await client.send("MKD " + part);
+                    } catch (err) {}
+                    await client.cd(part);
+                }
+            }
+        }
 
         for (const relPath of filesToDeploy) {
             const localPath = path.join(__dirname, "..", relPath);
@@ -59,7 +74,7 @@ async function deploy() {
                 await client.cd(initialDir);
                 const remoteDir = path.dirname(normalizedRelPath);
                 if (remoteDir && remoteDir !== ".") {
-                    await client.ensureDir(remoteDir);
+                    await cdOrCreateRelative(remoteDir);
                 }
                 const fileName = path.basename(normalizedRelPath);
                 await client.uploadFile(localPath, fileName);

@@ -57,16 +57,21 @@
                                     @php
                                         $tooltip = "";
                                     @endphp
-                                     <div class="row mt-3  ">
-                                        <div class="col-lg-12 text-center d-flex justify-content-center align-content-center">
+                                     <div class="row mt-3">
+                                        <div class="col-lg-12 text-center d-flex justify-content-center align-items-center gap-2">
                                             @if(permissionCheck('permission.permissions.store'))
                                                 <button class="primary-btn fix-gr-bg" data-bs-toggle="tooltip"
                                                         type="submit"
                                                         title="{{@$tooltip}}">
                                                     <i class="ti-check"></i>
                                                     {{!isset($role)? trans('common.Save') : trans('common.Update')}}
-
                                                 </button>
+                                            @endif
+                                            @if(isset($role))
+                                                <a href="{{ route('permission.roles.index') }}" class="primary-btn tr-bg">
+                                                    <i class="ti-close"></i>
+                                                    {{ trans('common.Cancel') }}
+                                                </a>
                                             @endif
                                         </div>
                                     </div>

@@ -49,14 +49,20 @@ async function deploy() {
         console.log("✅ Connessione FTP stabilita con successo!");
         console.log("📂 Caricamento dei file aggiornati su corsi.aletheiasrl.it...\n");
 
+        const initialDir = await client.pwd();
+
         for (const relPath of filesToDeploy) {
             const localPath = path.join(__dirname, "..", relPath);
-            const remotePath = "/" + relPath.replace(/\\/g, "/");
+            const normalizedRelPath = relPath.replace(/\\/g, "/");
 
             if (fs.existsSync(localPath)) {
-                const remoteDir = path.dirname(remotePath).replace(/\\/g, "/");
-                await client.ensureDir(remoteDir);
-                await client.uploadFile(localPath, remotePath);
+                await client.cd(initialDir);
+                const remoteDir = path.dirname(normalizedRelPath);
+                if (remoteDir && remoteDir !== ".") {
+                    await client.ensureDir(remoteDir);
+                }
+                const fileName = path.basename(normalizedRelPath);
+                await client.uploadFile(localPath, fileName);
                 console.log(`✓ Caricato con successo: ${relPath}`);
             } else {
                 console.warn(`⚠️ File non trovato in locale: ${relPath}`);

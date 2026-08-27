@@ -11,6 +11,10 @@ class RoleRepository implements RoleRepositoryInterface
 {
     public function all()
     {
+        Role::firstOrCreate(
+            ['name' => 'Funzionario Esterno'],
+            ['type' => 'User Defined']
+        );
         return Role::orderBy('id', 'desc')->get();
     }
 

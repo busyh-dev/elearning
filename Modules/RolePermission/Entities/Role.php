@@ -48,6 +48,19 @@ class Role extends Model
         });
     }
 
+    public function getNameAttribute($value)
+    {
+        $map = [
+            'Staff' => 'Tutor',
+            'staff' => 'Tutor',
+            'Student' => 'Studente',
+            'student' => 'Studente',
+            'Instructor' => 'Docente',
+            'instructor' => 'Docente',
+        ];
+        return $map[$value] ?? $value;
+    }
+
     public function users()
     {
         return $this->hasMany(User::class);
